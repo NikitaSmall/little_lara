@@ -38,7 +38,8 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Laravel 5</div>
+                <div class="title">Hello, {{$name}}. </br>
+                  From Laravel 5</div>
             </div>
         </div>
     </body>
