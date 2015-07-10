@@ -13,9 +13,14 @@ class HomeController extends Controller
      * Display a listing of the resource.
      *
      * @return Response
+     * @Get("/")
      */
     public function index()
     {
-        return view('welcome', ['name' => 'Nikita']);
+        $data = array(
+          'name' => 'Nikita',
+          'date' => date('Y-m-d')
+        );
+        return view('home.welcome');
     }
 }

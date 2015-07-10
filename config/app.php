@@ -144,6 +144,10 @@ return [
         todoparrot\Providers\EventServiceProvider::class,
         todoparrot\Providers\RouteServiceProvider::class,
 
+        /*
+         * Some custom providers..
+         */
+        Collective\Html\HtmlServiceProvider::class,
     ],
 
     /*
@@ -191,6 +195,7 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
+        'HTML'      => Collective\Html\HtmlFacade::class
 
     ],
 
