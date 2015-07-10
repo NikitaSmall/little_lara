@@ -13,7 +13,10 @@
 
   </head>
   <body>
-    @yield('content')
+    <div class="content">
+      @yield('content')
+    </div>
+
 
     <!-- Javascripts
             ================================================== -->

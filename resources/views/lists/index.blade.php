@@ -1,6 +1,10 @@
 @extends('layouts.master')
 
 @section('content')
+<div class="row">
+  <div class="">
+  </div>
+</div>
   <h1>Lists</h1>
 
   <ul class="list">
