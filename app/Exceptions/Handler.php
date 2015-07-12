@@ -5,6 +5,8 @@ namespace todoparrot\Exceptions;
 use Exception;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\Debug\ExceptionHandler as SymfonyDisplayer;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class Handler extends ExceptionHandler
 {
@@ -39,6 +41,21 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        return parent::render($request, $e);
+        if ($e instanceof ModelNotFoundException) {
+            return $this->renderModelNotFoundException($e);
+        } else {
+            return parent::render($request, $e);
+        }
+    }
+
+    /**
+    *
+    */
+    protected function renderModelNotFoundException(ModelNotFoundException $e) {
+      if (view()->exists('errors.404')) {
+        return response()->view('errors.404', [], 404);
+      } else {
+        return (new SymfonyDisplayer(config('app.debug')))->createResponse($e);
+      }
     }
 }
