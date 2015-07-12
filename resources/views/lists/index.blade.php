@@ -7,11 +7,26 @@
 </div>
   <h1>Lists</h1>
 
-  <ul class="list">
+  <table class="table table-stripped">
     @forelse($lists as $list)
-      <li>{{$list->name}} - {{$list->description}}</li>
+      <tr>
+        <td>
+          {{$list->id}}
+        </td>
+        <td>
+          {{$list->name}}
+        </td>
+        <td>
+          {{$list->description}}
+        </td>
+      </tr>
     @empty
       <p>Empty!</p>
     @endforelse
-  </ul>
+  </table>
+
+  <div>
+    {!! $lists->render() !!}
+  </div>
+  {!! link_to_action('ListsController@create','Создать новую задачу', [], ['class' => 'btn btn-success']) !!}
 @endsection

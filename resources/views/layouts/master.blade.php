@@ -14,7 +14,12 @@
   </head>
   <body>
     <div class="content">
-      @yield('content')
+      <div class="row">
+        <div class="col-md-offset-1 col-md-10">
+          @yield('content')
+        </div>
+      </div>
+
     </div>
 
 

@@ -18,7 +18,7 @@ class ListsController extends Controller
      */
     public function index()
     {
-        $lists = TodoList::all();
+        $lists = TodoList::orderBy('id', 'DESC')->paginate(10);
 
         return view('lists.index')->with('lists', $lists);
     }
@@ -30,7 +30,8 @@ class ListsController extends Controller
      */
     public function create()
     {
-        //
+        $list = new TodoList;
+        return view('lists.create')->with('list', $list);
     }
 
     /**
@@ -38,9 +39,15 @@ class ListsController extends Controller
      *
      * @return Response
      */
-    public function store()
+    public function store(Request $request)
     {
-        //
+        TodoList::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'complete' => $request->complete
+          ]);
+
+          return redirect()->action('ListsController@index');
     }
 
     /**
