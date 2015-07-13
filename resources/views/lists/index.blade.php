@@ -19,6 +19,14 @@
         <td>
           {{$list->description}}
         </td>
+        <td>
+          {!! Form::model($list, ['method' => 'delete', 'url' => '/lists/' . $list->id ]) !!}
+            {!! csrf_field() !!}
+            <button type="submit" class="btn btn-danger">
+              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </button>
+          {!! Form::close() !!}
+        </td>
       </tr>
     @empty
       <p>Empty!</p>

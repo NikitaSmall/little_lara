@@ -93,6 +93,7 @@ class ListsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        TodoList::destroy($id);
+        return redirect()->action('ListsController@index');
     }
 }
