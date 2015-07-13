@@ -4,6 +4,7 @@
 <h1>Новая задача</h1>
 <br>
   {!! Form::model($list, array('action' => 'ListsController@store')) !!}
+    {!! csrf_field() !!}
     <div class="form-group">
       {!! Form::label('name', 'Название задачи') !!}
       {!! Form::text('name', '', array('class' => 'form-control')) !!}
