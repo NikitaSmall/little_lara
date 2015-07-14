@@ -143,6 +143,7 @@ return [
         todoparrot\Providers\AppServiceProvider::class,
         todoparrot\Providers\EventServiceProvider::class,
         todoparrot\Providers\RouteServiceProvider::class,
+        todoparrot\Providers\UserNameServiceProvider::class,
 
         /*
          * Some custom providers..
@@ -196,7 +197,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
         'HTML'      => Collective\Html\HtmlFacade::class,
-        'Form' => Collective\Html\FormFacade::class,
+        'Form'      => Collective\Html\FormFacade::class,
 
     ],
 

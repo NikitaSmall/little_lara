@@ -14,6 +14,7 @@
   </head>
   <body>
     <div class="content">
+      @include('partials.nav')
       <div class="row">
         <div class="col-md-offset-1 col-md-10">
           @yield('content')
