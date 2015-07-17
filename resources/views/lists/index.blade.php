@@ -20,6 +20,11 @@
           {{$list->description}}
         </td>
         <td>
+          <a href='{{ '/lists/' . $list->id . '/edit' }}' class="btn btn-default">
+            <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+          </a>
+        </td>
+        <td>
           {!! Form::model($list, ['method' => 'delete', 'url' => '/lists/' . $list->id ]) !!}
             {!! csrf_field() !!}
             <button type="submit" class="btn btn-danger">
