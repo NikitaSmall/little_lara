@@ -44,7 +44,7 @@ class ListsController extends Controller
         TodoList::create([
             'name' => $request->name,
             'description' => $request->description,
-            'complete' => $request->complete
+            'complete' => $request->complete || 0
           ]);
 
           return redirect()->action('ListsController@index');
@@ -71,7 +71,9 @@ class ListsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $list = TodoList::findOrFail($id);
+
+        return view('lists.edit')->with('list', $list);
     }
 
     /**
@@ -80,9 +82,12 @@ class ListsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update($id)
+    public function update($id, Request $request)
     {
-        //
+        $list = TodoList::findOrFail($id);
+        $list->customUpdate($request->name, $request->description, $request->complete);
+
+        return redirect()->action('ListsController@index');
     }
 
     /**

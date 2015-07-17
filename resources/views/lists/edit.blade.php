@@ -1,9 +1,9 @@
 @extends('layouts.master')
 
 @section('content')
-<h1>Новая задача</h1>
+<h1>Редактирвоание задачи № {{$list->id}}</h1>
 <br>
-  {!! Form::model($list, array('action' => 'ListsController@store')) !!}
+    {!! Form::model($list, ['method' => 'put', 'url' => '/lists/' . $list->id]) !!}
     {!! csrf_field() !!}
     <div class="form-group">
       {!! Form::label('name', 'Название задачи') !!}
@@ -19,7 +19,7 @@
       {!! Form::checkbox('complete', 1, array('class' => 'form-control')) !!} {!! Form::label('complete', 'Выполнена?') !!}
     </div>
 
-    {!! Form::submit('Создать', array('class' => 'btn btn-success')) !!}
+    {!! Form::submit('Обновить', array('class' => 'btn btn-success')) !!}
 
   {!! Form::close() !!}
 @endsection
