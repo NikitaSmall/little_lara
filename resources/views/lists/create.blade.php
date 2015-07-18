@@ -1,8 +1,17 @@
 @extends('layouts.master')
 
 @section('content')
-<h1>Новая задача</h1>
-<br>
+  <h1>Новая задача</h1>
+  <br>
+  @if (count($errors) > 0)
+      <div class="alert alert-danger">
+          <ul>
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+      </div>
+  @endif
   {!! Form::model($list, array('action' => 'ListsController@store')) !!}
     {!! csrf_field() !!}
     <div class="form-group">

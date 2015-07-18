@@ -1,9 +1,18 @@
 @extends('layouts.master')
 
 @section('content')
-<h1>Редактирвоание задачи № {{$list->id}}</h1>
-<br>
-    {!! Form::model($list, ['method' => 'put', 'url' => '/lists/' . $list->id]) !!}
+  <h1>Редактирвоание задачи № {{$list->id}}</h1>
+  <br>
+  @if (count($errors) > 0)
+      <div class="alert alert-danger">
+          <ul>
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+      </div>
+  @endif
+  {!! Form::model($list, ['method' => 'put', 'url' => '/lists/' . $list->id]) !!}
     {!! csrf_field() !!}
     <div class="form-group">
       {!! Form::label('name', 'Название задачи') !!}

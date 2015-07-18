@@ -41,6 +41,10 @@ class ListsController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required',
+            'description' => 'required'
+          ]);
         TodoList::create([
             'name' => $request->name,
             'description' => $request->description,
@@ -85,6 +89,12 @@ class ListsController extends Controller
     public function update($id, Request $request)
     {
         $list = TodoList::findOrFail($id);
+
+        $this->validate($request, [
+            'name' => 'required',
+            'description' => 'required'
+          ]);
+
         $list->customUpdate($request->name, $request->description, $request->complete);
 
         return redirect()->action('ListsController@index');
