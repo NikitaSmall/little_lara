@@ -19,3 +19,12 @@ $factory->define(todoparrot\User::class, function ($faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+
+$factory->define(todoparrot\TodoList::class, function ($faker) {
+  return [
+      'name' => $faker->name,
+      'description' => $faker->sentence(4),
+      'complete' => true,
+  ];
+});
