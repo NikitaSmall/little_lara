@@ -36,6 +36,7 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
     */
     private function prepareForTests()
     {
+      // Config::set('database.default', 'sqlite_testing');
       Artisan::call('migrate');
       Mail::pretend(true);
     }
